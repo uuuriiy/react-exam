@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { CacheProvider, ThemeProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
 import './index.css';
 import App from './App';
+import { store } from "./redux/index";
 import reportWebVitals from './reportWebVitals';
+import { theme } from './lib/theme';
+
+const cache = createCache({ key: 'react' });
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <CacheProvider value={cache}>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <App /> 
+          </Router>
+        </ThemeProvider>
+      </CacheProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
