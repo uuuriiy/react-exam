@@ -1,8 +1,7 @@
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import sanitizeHtml from 'sanitize-html';
 import { object, string, SchemaOf } from 'yup';
 import { store } from '../redux';
-import { AddTweetValidationSchema, Inputs, LoginValidationSchema, Sanitize, SignUpValidationSchema } from "../types";
+import { AddTweetValidationSchema, Inputs, LoginValidationSchema, SignUpValidationSchema } from "../types";
 
 // redux
 export type RootState = ReturnType<typeof store.getState>;
@@ -81,19 +80,3 @@ export const signUpValidationSchema: SchemaOf<SignUpValidationSchema> = object()
 export const addTweetValidationSchema: SchemaOf<AddTweetValidationSchema> = object().shape({
   tweet: string().min(1).max(143).required()
 })
-
-// sanitize
-// export const defaultOptions = {
-//   allowedTags: [ 'b', 'i', 'em', 'strong', 'a' ],
-//   allowedAttributes: {
-//     'a': [ 'href' ]
-//   },
-//   allowedIframeHostnames: ['www.youtube.com']
-// };
-
-// export const sanitize: Sanitize = (dirty, options) => ({
-//   __html: sanitizeHtml(
-//     dirty, 
-//     {...defaultOptions, ...options},
-//   )
-// });
