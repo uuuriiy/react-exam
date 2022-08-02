@@ -4,8 +4,8 @@ import SignUp from "../pages/SignUp";
 import { Routes } from "../types";
 
 export enum PATH {
-    HOME = '/',
-    LOGIN = '/login',
+    HOME = '/home',
+    LOGIN = '/',
     SIGNUP = '/signUp'
 }
 
